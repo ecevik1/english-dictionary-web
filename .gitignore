@@ -1,0 +1,21 @@
+# Visual Studio ve IDE Dosyaları
+.vs/
+*.user
+*.suo
+
+# Build ve Derleme Çıktıları
+bin/
+obj/
+*.dll
+*.exe
+
+# Yayın Çıktısı
+publish/
+
+# Temporary ve Loglar
+*.log
+*.tmp
+
+# Database Dosyaları (isteğe bağlı)
+*.mdf
+*.ldf
