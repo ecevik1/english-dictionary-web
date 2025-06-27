@@ -16,19 +16,33 @@ namespace EnglishDictionaryWeb.Controllers
         }
 
         public IActionResult Register() => View();
-
         [HttpPost]
-        public async Task<IActionResult> Register(string username, string password)
+        public async Task<IActionResult> Register(string username, string email, string password, string repeatPassword)
         {
-            var user = new AppUser { UserName = username };
+            if (password != repeatPassword)
+            {
+                ModelState.AddModelError(string.Empty, "Şifreler uyuşmuyor.");
+                return View();
+            }
+
+            var user = new AppUser { UserName = username, Email = email };
             var result = await _userManager.CreateAsync(user, password);
+
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
                 return RedirectToAction("Index", "Home");
             }
+
+            // Hataları modele yansıt
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
             return View();
         }
+
 
         public IActionResult Login() => View();
 

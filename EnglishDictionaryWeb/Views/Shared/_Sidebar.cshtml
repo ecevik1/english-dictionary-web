@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <div class="sidebar-brand-text mx-3">English Dictionary</div>
+    </a>
+
+    <hr class="sidebar-divider my-0" />
+
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Home" asp-action="Index">
+            <i class="fas fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Word" asp-action="Index">
+            <i class="fas fa-book"></i>
+            <span>My Words</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Quiz" asp-action="Index">
+            <i class="fas fa-question"></i>
+            <span>Quiz</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Learned" asp-action="Index">
+            <i class="fas fa-check"></i>
+            <span>Learned Words</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider" />
+
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </a>
+    </li>
+
+</ul>
+<!-- End of Sidebar -->

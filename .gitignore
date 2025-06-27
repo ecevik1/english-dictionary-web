@@ -1,21 +1,23 @@
-# Visual Studio ve IDE Dosyaları
+## Visual Studio
 .vs/
+bin/
+obj/
 *.user
 *.suo
 
-# Build ve Derleme Çıktıları
-bin/
-obj/
-*.dll
-*.exe
+## ASP.NET Core
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.json.user
 
-# Yayın Çıktısı
-publish/
-
-# Temporary ve Loglar
+## Log ve Build Dosyaları
 *.log
+*.DS_Store
+*.swp
 *.tmp
 
-# Database Dosyaları (isteğe bağlı)
-*.mdf
-*.ldf
+## Rider veya Diğer IDE'ler (Varsa)
+.idea/
+
+## Publish Klasörü (Varsa)
+publish/

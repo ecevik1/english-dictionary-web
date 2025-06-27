@@ -34,6 +34,9 @@ namespace EnglishDictionaryWeb
 
             var app = builder.Build();
 
+            // Statik dosyaları sunmak için
+            app.UseStaticFiles();
+
             // *** Hata Yönetimi ***
             if (!app.Environment.IsDevelopment())
             {
