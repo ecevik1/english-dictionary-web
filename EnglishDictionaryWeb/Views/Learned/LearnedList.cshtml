@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<EnglishDictionaryWeb.Models.Word>
+
+<h2>Öğrenilen Kelimeler</h2>
+
+@if (!Model.Any())
+{
+    <p>Henüz öğrenilen kelime yok.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>İngilizce</th>
+                <th>Türkçe</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var word in Model)
+            {
+                <tr>
+                    <td>@word.Text</td>
+                    <td>@word.Translation</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

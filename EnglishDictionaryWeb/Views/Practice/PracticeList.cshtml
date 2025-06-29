@@ -1,0 +1,77 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<EnglishDictionaryWeb.Models.Word>
+
+@{
+    string currentSort = ViewData["CurrentSort"] as string ?? "";
+}
+
+<h2>Pratik Yapılacak Kelimeler</h2>
+
+<form method="get" asp-action="PracticeList" class="form-inline mb-3">
+    <label for="sortOrder" class="mr-2">Sırala:</label>
+    <select id="sortOrder" name="sortOrder" class="form-control mr-2">
+        @{
+
+            var options = new[]
+            {
+        new { Value = "text_asc", Label = "Alfabetik (A-Z)"},
+        new { Value = "text_desc", Label = "Alfabetik (Z-A)" },
+                new { Value = "level_desc", Label = "Bilinmeme Seviyesi (Çoktan Aza)" },
+                new { Value = "level_asc", Label = "Bilinmeme Seviyesi (Azdan Çoka)" }
+         
+                
+            };
+
+        }
+
+        @foreach (var opt in options)
+        {
+            if (currentSort == opt.Value)
+            {
+                <option value="@opt.Value" selected>@opt.Label</option>
+            }
+            else
+            {
+                <option value="@opt.Value">@opt.Label</option>
+            }
+        }
+    </select>
+    <button type="submit" class="btn btn-primary">Filtrele</button>
+</form>
+
+<table class="table table-striped table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>İngilizce</th>
+            <th>Türkçe</th>
+            <th>Bilinmeme Seviyesi</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var word in Model)
+        {
+            <tr>
+                <td>@word.Text</td>
+                <td>@word.Translation</td>
+                <td>@word.Level</td>
+                <td>
+                    <form asp-action="IncreaseLevel" asp-route-id="@word.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-success btn-sm">➕</button>
+                    </form>
+                    <form asp-action="DecreaseLevel" asp-route-id="@word.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-warning btn-sm">➖</button>
+                    </form>
+                    <form asp-action="Delete" asp-route-id="@word.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
