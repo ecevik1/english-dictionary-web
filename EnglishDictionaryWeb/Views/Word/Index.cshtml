@@ -3,5 +3,28 @@
 *@
 @{
 }
-<h1>My Words Page</h1>
-<p>Burada kullanıcı kelime listesini görecek.</p>
+@model List<EnglishDictionaryWeb.Models.Word>
+
+<h2>Kelime Listen</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>İngilizce</th>
+            <th>Türkçe</th>
+            <th>Bilinmeme Seviyesi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var word in Model)
+        {
+            <tr>
+                <td>@word.Text</td>
+                <td>@word.Translation</td>
+                <td>@word.Level</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Word/Add" class="btn btn-primary">Yeni Kelime Ekle</a>
