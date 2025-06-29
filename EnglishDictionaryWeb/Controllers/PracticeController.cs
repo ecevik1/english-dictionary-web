@@ -88,7 +88,6 @@ namespace EnglishDictionaryWeb.Controllers
                 _context.Words.Remove(word);
                 await _context.SaveChangesAsync();
             }
-            Console.WriteLine($"Deleted word with ID: {id}");
             return RedirectToAction("PracticeList");
         }
 
